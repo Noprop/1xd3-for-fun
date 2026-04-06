@@ -38,7 +38,7 @@ require __DIR__ . '/includes/header.php';
 
         <div class="hero-actions">
           <a class="btn btn-primary btn-large" href="auth.php?panel=signup">Get Started</a>
-          <a class="btn btn-secondary btn-large" href="#">See How It Works</a>
+          <a class="btn btn-secondary btn-large" href="demo.php">See How It Works</a>
         </div>
       </div>
 
