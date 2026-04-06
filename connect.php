@@ -53,6 +53,30 @@ try {
       date_updated TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )");
 
+    $pdo->exec("CREATE TABLE IF NOT EXISTS organizations (
+      org_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      org_name TEXT NOT NULL,
+      org_type TEXT NOT NULL DEFAULT 'classroom'
+          CHECK(org_type IN ('school','classroom','community_group')),
+      admin_user_id INTEGER NOT NULL,
+      description TEXT DEFAULT NULL,
+      logo_url TEXT DEFAULT NULL,
+      date_created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (admin_user_id) REFERENCES users(user_id)
+    )");
+ 
+    $pdo->exec("CREATE TABLE IF NOT EXISTS org_members (
+      membership_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      org_id INTEGER NOT NULL,
+      user_id INTEGER NOT NULL,
+      org_role TEXT NOT NULL DEFAULT 'member'
+          CHECK(org_role IN ('student','educator','admin')),
+      joined_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (org_id) REFERENCES organizations(org_id),
+      FOREIGN KEY (user_id) REFERENCES users(user_id),
+      UNIQUE(org_id, user_id)
+    )");
+
     $pdo->exec("INSERT OR IGNORE INTO users (
       username,
       email,
