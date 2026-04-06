@@ -1,9 +1,9 @@
 const container = document.getElementById("container");
-const pickupSound = new Audio('/1xd3-for-fun/assets/pop-high.mp3');
+const pickupSound = new Audio('./assets/pop-high.mp3');
 pickupSound.volume = 0.1;
-const dropSound = new Audio('/1xd3-for-fun/assets/pop-low.mp3');
+const dropSound = new Audio('./assets/pop-low.mp3');
 dropSound.volume = 0.15;
-const hoverSound = new Audio('/1xd3-for-fun/assets/hover-sound.mp3');
+const hoverSound = new Audio('./assets/hover-sound.mp3');
 hoverSound.volume = 0.15;
 
 
@@ -46,12 +46,7 @@ function initCard(card) {
         if (!isDragging) return;
 
         const rect = container.getBoundingClientRect();
-        if (
-            e.clientX < rect.left  ||
-            e.clientX > rect.right ||
-            e.clientY < rect.top   ||
-            e.clientY > rect.bottom
-        ) {
+        if (e.clientX < rect.left  || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
             mouseUp();
             return;
         }

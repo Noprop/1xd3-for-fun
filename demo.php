@@ -20,7 +20,7 @@ require __DIR__ . '/includes/header.php';
     <!-- Demo content goes here -->
     <div id="container"></div>
 
-    <script src="/1xd3-for-fun/js/demo.js"></script>
+    <script src="./js/demo.js"></script>
 
   </main>
 
